@@ -1,0 +1,14 @@
+---
+- hosts: tower
+  remote_user: root
+  vars:
+    - tower_path: /tmp/ansible-tower-last-release
+    - tower_admin_pass: admin-password
+    - rhn_username: user-rhn
+    - rhn_pass: "password-rhn"
+    - hostname_full: host-id-rhn
+    - count: 3
+    - ip:192.168.0.1
+  tasks:
+    - name: obteniendo cantidad de equipos:
+    
