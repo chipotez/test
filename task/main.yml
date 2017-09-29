@@ -1,28 +1,12 @@
-
-#########################################
-#                                       #
-# Instalacion y configuración Server IPA#
-#                                       #
-#########################################
-
-- name: Instalacion de Servidor IPA
-  hosts: Master
-  gather_facts: True
-#######################################################
-#                                                     #
-# Creando Servidor IPA  GCP                           #
-#                                                     #
-#######################################################
-- name: Registrando equipo en RHN.
-  include: registro.yml
-  ignore_errors: True
-
-######################################################
-#                                                    #
-# Instalacion y configuración Server IPA             #
-#                                                    #
-######################################################
-
-- name: Instalacion de Servidor IPA
-  include: deploy-ipa.yml
-  ignore_errors: True
+---
+- name: "IP DINAMICAS"
+  hosts: all
+  remote_user: root
+  vars_prompt:
+    - name: "ip_dinamica"
+      prompt: "ingrese la ip de un nuevo equipo"
+      private: no
+  tasks:
+     - add_host: "{{ ip_dinamica }}"
+       groups: dinamic-ip
+     - debug: msg=" cosas a realizar en este host"
