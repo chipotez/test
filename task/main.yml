@@ -1,0 +1,28 @@
+
+#########################################
+#                                       #
+# Instalacion y configuración Server IPA#
+#                                       #
+#########################################
+
+- name: Instalacion de Servidor IPA
+  hosts: Master
+  gather_facts: True
+#######################################################
+#                                                     #
+# Creando Servidor IPA  GCP                           #
+#                                                     #
+#######################################################
+- name: Registrando equipo en RHN.
+  include: registro.yml
+  ignore_errors: True
+
+######################################################
+#                                                    #
+# Instalacion y configuración Server IPA             #
+#                                                    #
+######################################################
+
+- name: Instalacion de Servidor IPA
+  include: deploy-ipa.yml
+  ignore_errors: True
