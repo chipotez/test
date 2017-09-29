@@ -1,12 +1,14 @@
 ---
 - name: "IP DINAMICAS"
-  hosts: all
+  hosts: localhost
   remote_user: root
   vars_prompt:
     - name: "ip_dinamica"
       prompt: "ingrese la ip de un nuevo equipo"
       private: no
   tasks:
-     - add_host: "{{ ip_dinamica }}"
-       groups: dinamic-ip
-     - debug: msg=" cosas a realizar en este host"
+     - add_host:
+         name: "{{ ip_dinamica }}"
+         groups: dinamic-ip
+       register: new_ip
+     - debug: msg="{{ new_ip }}"
