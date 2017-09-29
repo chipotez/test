@@ -1,5 +1,5 @@
 ---
-- hosts: tower
+- hosts: all
   remote_user: root
   vars:
     - tower_path: /tmp/ansible-tower-last-release
@@ -9,6 +9,12 @@
     - hostname_full: host-id-rhn
     - count: 3
     - ip:192.168.0.1
-  tasks:
-    - name: obteniendo cantidad de equipos:
-    
+  vars_prompt:
+    - name: "ip_dinamica"
+      prompt: "ingrese la ip de un nuevo equipo"
+      private: no
+  task:
+     - add_host: "{{ ip_dinamica }}"
+       groups: dinamic-ip
+
+     - debug: msg=" cosas a realizar en este host"
