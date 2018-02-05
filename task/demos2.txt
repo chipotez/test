@@ -5,3 +5,5 @@ cuatro
 cinco
 seis
 siete
+
+edmos
