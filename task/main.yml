@@ -12,3 +12,5 @@
          groups: dinamic-ip
        register: new_ip
      - debug: msg="{{ new_ip }}"
+#prueba de escritura desde vs-console
+#demos
